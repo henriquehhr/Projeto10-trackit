@@ -7,14 +7,22 @@ export const $Button = styled.button`
     border-radius: 5px;
     text-align: center;
 
-    height: ${props => props.height};
-    width: ${props => props.width};
-    font-size: ${props => props.fontSize};
-
     &.inverted-color {
         background: #FFFFFF;
         color: #52B6FF;
     }
+
+    &.big {
+        height: 45px;
+        font-size: 21px;
+    }
+
+    &.small {
+        height: 35px;
+        font-size: 16px;
+        padding: 0 17px;
+    }
+
 `;
 
 export const $Input = styled.input`
@@ -26,12 +34,18 @@ export const $Input = styled.input`
     line-height: 25px;
     color: #666666;
     height: 45px;
-
-    width: ${props => props.width};
+    padding-left: 10px;
 
     ::placeholder {
         color: #DBDBDB;
     }
+`;
+
+export const $Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
 `;
 
 export const $H2 = styled.h2`

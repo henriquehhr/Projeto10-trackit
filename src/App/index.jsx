@@ -4,6 +4,7 @@ import SignInPage from "./../SignInPage";
 import TodayPage from "./../TodayPage";
 import HistoryPage from "./../HistoryPage";
 import LoginPage from "./../LoginPage";
+import "./../reset.css";
 
 export default function App() {
 
