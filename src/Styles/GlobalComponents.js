@@ -1,0 +1,46 @@
+import styled from "styled-components";
+
+export const $Button = styled.button`
+    border: none;
+    background: #52B6FF;
+    color: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+
+    height: ${props => props.height};
+    width: ${props => props.width};
+    font-size: ${props => props.fontSize};
+
+    &.inverted-color {
+        background: #FFFFFF;
+        color: #52B6FF;
+    }
+`;
+
+export const $Input = styled.input`
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #666666;
+    height: 45px;
+
+    width: ${props => props.width};
+
+    ::placeholder {
+        color: #DBDBDB;
+    }
+`;
+
+export const $H2 = styled.h2`
+    font-size: 22.976px;
+    line-height: 29px;
+    color: #126BA5;
+`;
+
+export const $Section = styled.section`
+    background-color: #E5E5E5;
+    margin: 92px 18px 116px 18px;
+`;
