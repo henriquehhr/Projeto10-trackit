@@ -48,6 +48,12 @@ export const $Form = styled.form`
     width: 100%;
 `;
 
+export const $LogoImg = styled.img`
+    aspect-ratio: 332 / 196;
+    height: auto;
+    Width : 180px;
+`;
+
 export const $H2 = styled.h2`
     font-size: 22.976px;
     line-height: 29px;

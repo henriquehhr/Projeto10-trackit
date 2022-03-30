@@ -22,9 +22,3 @@ export const $LoginPageSection = styled.section`
         margin-top: 25px;
     }
 `;
-
-export const $LogoImg = styled.img`
-    aspect-ratio: 332 / 196;
-    height: auto;
-    Width : 180px;
-`;
