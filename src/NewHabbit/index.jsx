@@ -1,3 +1,5 @@
+import { axios } from "axios";
+
 import { $NewHabbitContainer } from "./style";
 import { $Button, $Input, $WeekButton } from "../Styles/GlobalComponents";
 

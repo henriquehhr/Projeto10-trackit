@@ -1,3 +1,5 @@
+import { axios } from "axios";
+
 import { $TodayHabbitContainer } from "./style";
 
 export default function TodayHabbit() {
