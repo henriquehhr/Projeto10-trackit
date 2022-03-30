@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "./../reset.css"
 
 export const $Button = styled.button`
     border: none;
@@ -7,7 +6,6 @@ export const $Button = styled.button`
     color: #FFFFFF;
     border-radius: 5px;
     text-align: center;
-    font-family: "Lexend deca";
 
     &.inverted-color {
         background: #FFFFFF;
@@ -29,6 +27,12 @@ export const $Button = styled.button`
         height: 35px;
         font-size: 16px;
         padding: 0 17px;
+    }
+
+    &.miniscule {
+        height: 35px;
+        width: 40px;
+        font-size: 27px;
     }
 
 `;
@@ -56,6 +60,22 @@ export const $Form = styled.form`
     width: 100%;
 `;
 
+export const $WeekButton = styled.button`
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    color: #dbdbdb;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    background-color: #FFFFFF;
+
+    &.selected {
+        border-color: #CFCFCF;
+        background-color: #CFCFCF;
+        color: #FFFFFF;
+    }
+`;
+
 export const $LogoImg = styled.img`
     aspect-ratio: 332 / 196;
     height: auto;
@@ -69,6 +89,7 @@ export const $H2 = styled.h2`
 `;
 
 export const $Section = styled.section`
-    background-color: #E5E5E5;
-    margin: 92px 18px 116px 18px;
+    background-color: #F2F2F2;
+    padding: 92px 18px 116px 18px;
+    height: 100vh;
 `;
