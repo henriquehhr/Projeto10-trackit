@@ -11,7 +11,7 @@ export const $Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 18px;
+    padding: 0 18px;
 
     h1 {
         font-family: 'Playball';

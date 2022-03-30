@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "./../reset.css"
 
 export const $Button = styled.button`
     border: none;
@@ -6,6 +7,7 @@ export const $Button = styled.button`
     color: #FFFFFF;
     border-radius: 5px;
     text-align: center;
+    font-family: "Lexend deca";
 
     &.inverted-color {
         background: #FFFFFF;
@@ -15,6 +17,12 @@ export const $Button = styled.button`
     &.big {
         height: 45px;
         font-size: 21px;
+    }
+
+    &.medium {
+        height: 35px;
+        width: 90.2px;
+        font-size: 18px;
     }
 
     &.small {
