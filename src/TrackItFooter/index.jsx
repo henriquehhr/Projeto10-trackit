@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { $Button } from '../Styles/GlobalComponents';
@@ -7,7 +8,9 @@ export default function TrackItFooter() {
 
     return (
         <$Footer>
-            <$Button className="inverted-color medium">Hábitos</$Button>
+            <Link to="/habitos">
+                <$Button className="inverted-color medium">Hábitos</$Button>
+            </Link>
             <div className="todayContainer">
                 <CircularProgressbar
                     value={70}

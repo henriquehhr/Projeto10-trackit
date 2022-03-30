@@ -1,5 +1,6 @@
-
-import { axios } from "axios";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import UserContext from "../contexts/UserContexts";
 import TrackItHeader from "./../TrackItHeader";
 import TrackItFooter from "./../TrackItFooter";
 import NewHabbit from "../NewHabbit";
@@ -8,6 +9,14 @@ import { $H2, $Button, $Input, $WeekButton } from "./../Styles/GlobalComponents"
 import { $HabitsPageSection } from "./style";
 
 export default function HabitsPage() {
+
+    const { authToken } = useContext(UserContext);
+    console.log(authToken);
+    useEffect(() => {
+        const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+        //TODO colocar o token no axios.get()
+        //const promisse = axios.get(url);
+    }, []);
 
     return (
         <$HabitsPageSection>

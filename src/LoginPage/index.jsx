@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import UserContext from "./../contexts/UserContexts"
 import logo from "./../assets/img/logo-trackit.png"
 import { $Form, $Button, $Input, $LogoImg } from "./../Styles/GlobalComponents";
 import { $LoginPageSection } from "./style";
@@ -12,6 +13,7 @@ export default function LoginPage() {
         password: ""
     });
     const navigate = useNavigate();
+    const { setAuthToken } = useContext(UserContext);
 
     function sendLoginInfo(e) {
         e.preventDefault();
@@ -19,7 +21,7 @@ export default function LoginPage() {
         const promisse = axios.post(url, loginInfo);
         //TODO Enquanto estiver carregando, os campos e o botão devem ser desabilitados
         promisse.then(response => {
-
+            setAuthToken(response.data.token);
             navigate("/hoje");
         });
         //TODO Em caso de falha os campos e o botão devem ser habilitados novamente
