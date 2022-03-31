@@ -19,6 +19,8 @@ export default function HabitsPage() {
     const { authToken } = useContext(UserContext);
 
     useEffect(() => {
+        if (!authToken)
+            return;
         const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
         const config = {
             headers: {
@@ -27,7 +29,7 @@ export default function HabitsPage() {
         }
         const promisse = axios.get(url, config);
         promisse.then(response => setHabbits(response.data));
-    }, []);
+    }, [authToken]);
     //TODO criar tela de loading
     function renderCreatHabbit() {
         if (!createHabbit)

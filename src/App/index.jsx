@@ -12,7 +12,6 @@ export default function App() {
 
     const [authToken, setAuthToken] = useState("");
     const [userAvatar, setUserAvatar] = useState("");
-    //const [habbitsDone, setHabbitsDone] = useState(0);
     const [habbits, setHabbits] = useState([]);
     const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar, habbits, setHabbits };
     const navigate = useNavigate();

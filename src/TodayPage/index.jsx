@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import UserContext from "./../contexts/UserContexts";
@@ -11,7 +11,6 @@ import TodayHabbit from "../TodayHabbit";
 
 export default function TodayPage() {
 
-    //const [habbits, setHabbits] = useState([]);
     const { authToken, habbits, setHabbits } = useContext(UserContext);
 
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
@@ -29,8 +28,6 @@ export default function TodayPage() {
         promisse.then(response => setHabbits(response.data));
         promisse.catch(err => console.log(err));
     }, []);
-
-    const percentHabbitsDone = getPercentHabbitsDone();
 
     function getPercentHabbitsDone() {
         if (habbits.length == 0)
@@ -69,7 +66,7 @@ export default function TodayPage() {
         <$TodayPageSection>
             <TrackItHeader />
             <$H2>{date}</$H2>
-            {percentHabbitsDone}
+            {getPercentHabbitsDone()}
             <ul>
                 {renderTodayHabbits()}
             </ul>

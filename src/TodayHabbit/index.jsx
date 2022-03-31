@@ -39,7 +39,6 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
             }
             //TODO colocar a função setHabbits antes do promisse.then() para não ter atraso na renderização
             setHabbits([...habbits]);
-            //setPercentHabbitsDone();
         });
         promisse.catch(err => console.log(err));
     }
