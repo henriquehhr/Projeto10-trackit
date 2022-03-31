@@ -37,10 +37,13 @@ export default function TodayPage() {
             habbits.map(habbit =>
                 <TodayHabbit
                     key={habbit.id}
+                    id={habbit.id}
                     name={habbit.name}
                     done={habbit.done}
                     currentSequence={habbit.currentSequence}
                     highestSequence={habbit.highestSequence}
+                    habbits={habbits}
+                    setHabbits={setHabbits}
                 />)
         );
     }
