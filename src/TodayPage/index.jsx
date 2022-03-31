@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 import UserContext from "./../contexts/UserContexts";
 
 import TrackItHeader from "./../TrackItHeader";
@@ -13,6 +14,10 @@ export default function TodayPage() {
     const [habbits, setHabbits] = useState([]);
     const { authToken } = useContext(UserContext);
 
+    const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+    const now = dayjs();
+    const date = `${week[now.$W]}, ${now.$D}/${now.$M < 9 ? "0" + (now.$M + 1) : now.$M + 1}`;
+
     useEffect(() => {
         const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
         const config = {
@@ -22,7 +27,7 @@ export default function TodayPage() {
         };
         const promisse = axios.get(url, config);
         promisse.then(response => setHabbits(response.data));
-        promisse.catch(err => console.log(err.data));
+        promisse.catch(err => console.log(err));
     }, []);
 
     function renderTodayHabbits() {
@@ -43,7 +48,7 @@ export default function TodayPage() {
     return (
         <$TodayPageSection>
             <TrackItHeader />
-            <$H2> Segunda, 17/05</$H2>
+            <$H2>{date}</$H2>
             <p className="habits-done">Nenhum hábito concluído ainda</p>
             <ul>
                 {renderTodayHabbits()}
