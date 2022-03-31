@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import UserContext from "./../contexts/UserContexts"
 import { Link } from 'react-router-dom';
+import axios from "axios";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { $Button } from '../Styles/GlobalComponents';
@@ -8,7 +9,7 @@ import { $Footer } from "./style";
 
 export default function TrackItFooter() {
 
-    const { habbits } = useContext(UserContext);
+    const { habbits, setHabbits, authToken } = useContext(UserContext);
 
     let count = 0;
     for (let habbit of habbits) {
@@ -18,6 +19,20 @@ export default function TrackItFooter() {
     let percent = Math.round((count * 100) / habbits.length);
     if (habbits.length == 0)
         percent = 0;
+
+    useEffect(() => {
+        if (!authToken)
+            return;
+        const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${authToken}`
+            }
+        };
+        const promisse = axios.get(url, config);
+        promisse.then(response => setHabbits(response.data));
+        promisse.catch(err => console.log(err));
+    }, [authToken]);
 
     return (
         <$Footer>

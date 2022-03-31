@@ -11,23 +11,11 @@ import TodayHabbit from "../TodayHabbit";
 
 export default function TodayPage() {
 
-    const { authToken, habbits, setHabbits } = useContext(UserContext);
+    const { habbits, setHabbits } = useContext(UserContext);
 
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
     const now = dayjs();
     const date = `${week[now.$W]}, ${now.$D}/${now.$M < 9 ? "0" + (now.$M + 1) : now.$M + 1}`;
-
-    useEffect(() => {
-        const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
-        const config = {
-            headers: {
-                "Authorization": `Bearer ${authToken}`
-            }
-        };
-        const promisse = axios.get(url, config);
-        promisse.then(response => setHabbits(response.data));
-        promisse.catch(err => console.log(err));
-    }, []);
 
     function getPercentHabbitsDone() {
         if (habbits.length == 0)
