@@ -19,8 +19,6 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
         const promisse = axios.post(url, {}, config);
         promisse.then(() => {
             done = !done;
-            //TODO mudar a linha abaixo. Está alterando a ordem dos hábitos depois que marca/desmarca
-            const newHabbits = habbits.filter(habbit => habbit.id != id);
             if (done) {
                 currentSequence++;
                 if (currentSequence > highestSequence)
@@ -31,7 +29,16 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
                 if (highestSequence == initialHighestSequence)
                     highestSequence--;
             }
-            setHabbits([...newHabbits, { id, name, done, currentSequence, highestSequence }]);
+            //const newHabbits = habbits.filter(habbit => habbit.id != id);
+            for (let habbit of habbits) {
+                if (habbit.id == id) {
+                    habbit.done = done;
+                    habbit.currentSequence = currentSequence;
+                    habbit.highestSequence = highestSequence;
+                    break;
+                }
+            }
+            setHabbits([...habbits]);
         });
         promisse.catch(err => console.log(err));
     }

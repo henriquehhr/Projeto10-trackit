@@ -44,7 +44,6 @@ export default function TodayPage() {
         return <p className="habits-done habbit-done">{`${percent}% dos hábitos concluídos`}</p>;
     }
 
-    //TODO os hábitos estão mudando de ordem depois que desmarca um deles
     function renderTodayHabbits() {
         if (habbits.length == 0)
             return;
