@@ -76,7 +76,7 @@ export default function HabitsPage() {
                 {renderCreatHabbit()}
                 {renderHabbits()}
             </ul>
-            <TrackItFooter />
+            <TrackItFooter creatHabbitsPage={habbits} />
         </$HabitsPageSection>
     );
 }

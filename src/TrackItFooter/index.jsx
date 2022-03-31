@@ -7,7 +7,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { $Button } from '../Styles/GlobalComponents';
 import { $Footer } from "./style";
 
-export default function TrackItFooter() {
+export default function TrackItFooter({ creatHabbitsPage }) {
 
     const { habbits, setHabbits, authToken } = useContext(UserContext);
 
@@ -32,7 +32,7 @@ export default function TrackItFooter() {
         const promisse = axios.get(url, config);
         promisse.then(response => setHabbits(response.data));
         promisse.catch(err => console.log(err));
-    }, [authToken]);
+    }, [authToken, creatHabbitsPage]);
 
     return (
         <$Footer>
