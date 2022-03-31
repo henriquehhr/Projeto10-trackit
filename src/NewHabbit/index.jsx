@@ -15,6 +15,14 @@ export default function NewHabbit({ setCreateHabbit, habbits, setHabbits, weekBu
     function saveHabbit(e) {
         e.preventDefault();
         //TODO fazer validações antes de salvar o hábito
+        if (habbitTitle === "") {
+            alert("Insira um título para o hábito antes de salvar");
+            return;
+        }
+        if (!weekButtons.find(day => day)) {
+            alert("Escolha no mínimo um dia da semana para realizar o hábito");
+            return;
+        }
         let selectedDays = weekButtons.map((day, i) => {
             if (day) return i;
             else return false;
