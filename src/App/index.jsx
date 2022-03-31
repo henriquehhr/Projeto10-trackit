@@ -11,7 +11,8 @@ import "./../reset.css";
 export default function App() {
 
     const [authToken, setAuthToken] = useState("");
-    const contextValue = { authToken, setAuthToken };
+    const [userAvatar, setUserAvatar] = useState("");
+    const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar };
 
     return (
         <UserContext.Provider value={contextValue}>

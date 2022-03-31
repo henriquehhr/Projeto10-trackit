@@ -13,7 +13,7 @@ export default function LoginPage() {
         password: ""
     });
     const navigate = useNavigate();
-    const { setAuthToken } = useContext(UserContext);
+    const { setAuthToken, setUserAvatar } = useContext(UserContext);
 
     function sendLoginInfo(e) {
         e.preventDefault();
@@ -22,6 +22,7 @@ export default function LoginPage() {
         //TODO Enquanto estiver carregando, os campos e o botão devem ser desabilitados
         promisse.then(response => {
             setAuthToken(response.data.token);
+            setUserAvatar(response.data.image);
             navigate("/hoje");
         });
         //TODO Em caso de falha os campos e o botão devem ser habilitados novamente
