@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import UserContext from "../contexts/UserContexts";
 import HabitsPage from "./../HabitsPage";
 import SignInPage from "./../SignInPage";
@@ -12,20 +12,33 @@ export default function App() {
 
     const [authToken, setAuthToken] = useState("");
     const [userAvatar, setUserAvatar] = useState("");
-    const [habbitsDone, setHabbitsDone] = useState(0);
-    const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar, habbitsDone, setHabbitsDone };
+    //const [habbitsDone, setHabbitsDone] = useState(0);
+    const [habbits, setHabbits] = useState([]);
+    const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar, habbits, setHabbits };
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const loggedUser = JSON.parse(localStorage.getItem("chave-secreta"));
+        if (loggedUser) {
+            setUserAvatar(loggedUser.image);
+            setAuthToken(loggedUser.token);
+            if (location.pathname !== "/")
+                navigate(location.pathname);
+            else
+                navigate("/hoje");
+        }
+    }, []);
 
     return (
         <UserContext.Provider value={contextValue}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<LoginPage />} />
-                    <Route path="/cadastro" element={<SignInPage />} />
-                    <Route path="/habitos" element={<HabitsPage />} />
-                    <Route path="/hoje" element={<TodayPage />} />
-                    <Route path="/historico" element={<HistoryPage />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/cadastro" element={<SignInPage />} />
+                <Route path="/habitos" element={<HabitsPage />} />
+                <Route path="/hoje" element={<TodayPage />} />
+                <Route path="/historico" element={<HistoryPage />} />
+            </Routes>
         </UserContext.Provider>
     );
 }

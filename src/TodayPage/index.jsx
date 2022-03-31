@@ -11,8 +11,8 @@ import TodayHabbit from "../TodayHabbit";
 
 export default function TodayPage() {
 
-    const [habbits, setHabbits] = useState([]);
-    const { authToken, habbitsDone } = useContext(UserContext);
+    //const [habbits, setHabbits] = useState([]);
+    const { authToken, habbits, setHabbits } = useContext(UserContext);
 
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
     const now = dayjs();
@@ -35,9 +35,15 @@ export default function TodayPage() {
     function getPercentHabbitsDone() {
         if (habbits.length == 0)
             return <p className="habits-done">Nenhum hábito cadastrado para hoje</p>;
-        if (!habbitsDone)
+        let count = 0;
+        for (let habbit of habbits) {
+            if (habbit.done)
+                count++;
+        }
+        const percent = Math.round((count * 100) / habbits.length);
+        if (!percent)
             return <p className="habits-done">Nenhum hábito concluído ainda</p>;
-        return <p className="habits-done habbit-done">{`${habbitsDone}% dos hábitos concluídos`}</p>;
+        return <p className="habits-done habbit-done">{`${percent}% dos hábitos concluídos`}</p>;
     }
 
     function renderTodayHabbits() {

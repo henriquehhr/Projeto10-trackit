@@ -24,6 +24,7 @@ export default function LoginPage() {
         const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
         const promisse = axios.post(url, loginInfo);
         promisse.then(response => {
+            localStorage.setItem("chave-secreta", JSON.stringify(response.data));
             setAuthToken(response.data.token);
             setUserAvatar(response.data.image);
             navigate("/hoje");

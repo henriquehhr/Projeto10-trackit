@@ -8,7 +8,16 @@ import { $Footer } from "./style";
 
 export default function TrackItFooter() {
 
-    const { habbitsDone } = useContext(UserContext);
+    const { habbits } = useContext(UserContext);
+
+    let count = 0;
+    for (let habbit of habbits) {
+        if (habbit.done)
+            count++;
+    }
+    let percent = Math.round((count * 100) / habbits.length);
+    if (habbits.length == 0)
+        percent = 0;
 
     return (
         <$Footer>
@@ -18,7 +27,7 @@ export default function TrackItFooter() {
             <div className="todayContainer">
                 <Link to="/hoje">
                     <CircularProgressbar
-                        value={habbitsDone}
+                        value={percent}
                         text="Hoje"
                         background
                         backgroundPadding={6}

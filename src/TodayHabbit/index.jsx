@@ -6,7 +6,7 @@ import { $TodayHabbitContainer } from "./style";
 
 export default function TodayHabbit({ id, name, done, currentSequence, highestSequence, initialHighestSequence, habbits, setHabbits }) {
 
-    const { authToken, setHabbitsDone } = useContext(UserContext);
+    const { authToken } = useContext(UserContext);
 
     function toggleHabbit() {
         const check = done ? "uncheck" : "check";
@@ -39,19 +39,9 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
             }
             //TODO colocar a função setHabbits antes do promisse.then() para não ter atraso na renderização
             setHabbits([...habbits]);
-            setPercentHabbitsDone();
+            //setPercentHabbitsDone();
         });
         promisse.catch(err => console.log(err));
-    }
-
-    function setPercentHabbitsDone() {
-        let count = 0;
-        for (let habbit of habbits) {
-            if (habbit.done)
-                count++;
-        }
-        const percent = Math.round((count * 100) / habbits.length);
-        setHabbitsDone(percent);
     }
 
     return (
