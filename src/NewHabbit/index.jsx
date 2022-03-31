@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import UserContext from "../contexts/UserContexts";
 import axios from "axios";
+import { ThreeDots } from 'react-loader-spinner';
 
 import { $NewHabbitContainer } from "./style";
 import { $Button, $Input, $WeekButton } from "../Styles/GlobalComponents";
@@ -86,7 +87,9 @@ export default function NewHabbit({ setCreateHabbit, habbits, setHabbits, weekBu
                     disabled={disabled}>
                     Cancelar
                 </$Button>
-                <$Button type="submit" className="medium" disabled={disabled}>Salvar</$Button>
+                <$Button type="submit" className="medium" disabled={disabled}>
+                    {!disabled ? "Salvar" : <ThreeDots color="#FFFFFF" height={55} width={55} />}
+                </$Button>
             </div>
         </$NewHabbitContainer>
     );
