@@ -18,7 +18,7 @@ export const $HabbitContainer = styled.div`
 
     }
 
-    div.week {
+    ol.week {
         margin-top: 8px;
         display: flex;
         gap: 4px;

@@ -12,6 +12,10 @@ export const $Button = styled.button`
         color: #52B6FF;
     }
 
+    :disabled {
+        opacity: 0.7;
+    }
+
     &.big {
         height: 45px;
         font-size: 21px;
@@ -47,6 +51,11 @@ export const $Input = styled.input`
     color: #666666;
     height: 45px;
     padding-left: 10px;
+
+    :disabled {
+        background-color: #F2F2F2;
+        color: #AFAFAF;
+    }
 
     ::placeholder {
         color: #DBDBDB;
@@ -90,6 +99,6 @@ export const $H2 = styled.h2`
 
 export const $Section = styled.section`
     background-color: #F2F2F2;
-    padding: 92px 18px 116px 18px;
-    height: 100vh;
+    padding: 92px 18px 100px 18px;
+    min-height: 100vh;
 `;

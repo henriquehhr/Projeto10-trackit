@@ -5,30 +5,75 @@ import TrackItHeader from "./../TrackItHeader";
 import TrackItFooter from "./../TrackItFooter";
 import NewHabbit from "../NewHabbit";
 import Habbit from "../Habbit";
-import { $H2, $Button, $Input, $WeekButton } from "./../Styles/GlobalComponents"
+import { $H2, $Button } from "./../Styles/GlobalComponents"
 import { $HabitsPageSection } from "./style";
 
 export default function HabitsPage() {
 
+    const [habbits, setHabbits] = useState([]);
+    const [createHabbit, setCreateHabbit] = useState(false);
+    const [weekButtons, setWeekButtons] = useState([
+        false, false, false, false, false, false, false,
+    ]);
+    const [habbitTitle, setHabbitTitle] = useState("");
     const { authToken } = useContext(UserContext);
-    console.log(authToken);
+
     useEffect(() => {
         const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
-        //TODO colocar o token no axios.get()
-        //const promisse = axios.get(url);
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${authToken}`
+            }
+        }
+        const promisse = axios.get(url, config);
+        promisse.then(response => setHabbits(response.data));
     }, []);
+    //TODO criar tela de loading
+    function renderCreatHabbit() {
+        if (!createHabbit)
+            return;
+        return <NewHabbit
+            setCreateHabbit={setCreateHabbit}
+            habbits={habbits}
+            setHabbits={setHabbits}
+            weekButtons={weekButtons}
+            setWeekButtons={setWeekButtons}
+            habbitTitle={habbitTitle}
+            setHabbitTitle={setHabbitTitle}
+        />;
+    }
+    //TODO renderizar os hábitos na ordem contrária
+    function renderHabbits() {
+        if (habbits.length == 0)
+            return (
+                <p>Você não tem nenhum hábito cadastrado ainda.
+                    Adicione um hábito para começar a trackear!</p>
+            );
+        return (
+            habbits.map(habbit => <Habbit
+                key={habbit.id}
+                id={habbit.id}
+                name={habbit.name}
+                days={habbit.days}
+                habbits={habbits}
+                setHabbits={setHabbits}
+            />)
+        );
+    }
 
     return (
         <$HabitsPageSection>
             <TrackItHeader />
             <div className="create-habbit">
                 <$H2>Meus hábitos</$H2>
-                <$Button className="miniscule">+</$Button>
+                <$Button className="miniscule" onClick={() => setCreateHabbit(true)}>
+                    +
+                </$Button>
             </div>
-            <NewHabbit />
-            <Habbit />
-            <p>Você não tem nenhum hábito cadastrado ainda.
-                Adicione um hábito para começar a trackear!</p>
+            <ul>
+                {renderCreatHabbit()}
+                {renderHabbits()}
+            </ul>
             <TrackItFooter />
         </$HabitsPageSection>
     );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const $NewHabbitContainer = styled.div`
+export const $NewHabbitContainer = styled.form`
     background-color: #FFFFFF;
     border-radius: 5px;
     width: 100%;
@@ -9,7 +9,7 @@ export const $NewHabbitContainer = styled.div`
     flex-direction: column;
     margin-bottom: 29px;
 
-    div.week {
+    ol.week {
         margin-top: 8px;
         display: flex;
         gap: 4px;
