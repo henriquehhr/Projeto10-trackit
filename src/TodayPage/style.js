@@ -15,6 +15,7 @@ export const $TodayPageSection = styled($Section)`
 
     ul {
         display: grid;
+        grid-template-columns: 1fr;
         gap: 10px;
     }
 `;
