@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import UserContext from "./../contexts/UserContexts"
 import { Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -5,6 +7,8 @@ import { $Button } from '../Styles/GlobalComponents';
 import { $Footer } from "./style";
 
 export default function TrackItFooter() {
+
+    const { habbitsDone } = useContext(UserContext);
 
     return (
         <$Footer>
@@ -14,7 +18,7 @@ export default function TrackItFooter() {
             <div className="todayContainer">
                 <Link to="/hoje">
                     <CircularProgressbar
-                        value={70}
+                        value={habbitsDone}
                         text="Hoje"
                         background
                         backgroundPadding={6}

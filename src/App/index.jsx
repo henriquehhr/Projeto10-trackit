@@ -12,7 +12,8 @@ export default function App() {
 
     const [authToken, setAuthToken] = useState("");
     const [userAvatar, setUserAvatar] = useState("");
-    const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar };
+    const [habbitsDone, setHabbitsDone] = useState(0);
+    const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar, habbitsDone, setHabbitsDone };
 
     return (
         <UserContext.Provider value={contextValue}>
