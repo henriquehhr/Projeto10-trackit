@@ -30,6 +30,21 @@ export default function TodayPage() {
         promisse.catch(err => console.log(err));
     }, []);
 
+    function getPercentHabbitsDone() {
+        if (habbits.length == 0)
+            return <p className="habits-done">Nenhum hábito cadastrado para hoje</p>;
+        let count = 0;
+        for (let habbit of habbits) {
+            if (habbit.done)
+                count++;
+        }
+        const percent = Math.round((count * 100) / habbits.length);
+        if (!percent)
+            return <p className="habits-done">Nenhum hábito concluído ainda</p>;
+        return <p className="habits-done habbit-done">{`${percent}% dos hábitos concluídos`}</p>;
+    }
+
+    //TODO os hábitos estão mudando de ordem depois que desmarca um deles
     function renderTodayHabbits() {
         if (habbits.length == 0)
             return;
@@ -52,7 +67,7 @@ export default function TodayPage() {
         <$TodayPageSection>
             <TrackItHeader />
             <$H2>{date}</$H2>
-            <p className="habits-done">Nenhum hábito concluído ainda</p>
+            {getPercentHabbitsDone()}
             <ul>
                 {renderTodayHabbits()}
             </ul>

@@ -20,6 +20,7 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
         //TODO confirmar pra ver se preciso alterar manualmente o valor de currentSequence
         promisse.then(() => {
             done = !done;
+            //TODO mudar a linha abaixo. Está alterando a ordem dos hábitos depois que marca/desmarca
             const newHabbits = habbits.filter(habbit => habbit.id != id);
             setHabbits([...newHabbits, { id, name, done, currentSequence, highestSequence }]);
         });
