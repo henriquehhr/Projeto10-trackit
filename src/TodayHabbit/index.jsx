@@ -29,7 +29,6 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
                 if (highestSequence == initialHighestSequence)
                     highestSequence--;
             }
-            //const newHabbits = habbits.filter(habbit => habbit.id != id);
             for (let habbit of habbits) {
                 if (habbit.id == id) {
                     habbit.done = done;
@@ -47,7 +46,7 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
         <$TodayHabbitContainer>
             <h3>{name}</h3>
             <p>Sequência atual: <span className={done ? "selected" : ""}>{currentSequence}</span></p>
-            <p>Seu recorde: <span className={currentSequence == highestSequence ? "selected" : ""}>{highestSequence}</span></p>
+            <p>Seu recorde: <span className={currentSequence == highestSequence && highestSequence != 0 ? "selected" : ""}>{highestSequence}</span></p>
             <button className={done ? "selected" : ""} onClick={toggleHabbit}>
                 <ion-icon name="checkmark-outline"></ion-icon>
             </button>
