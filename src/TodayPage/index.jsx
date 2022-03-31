@@ -57,6 +57,7 @@ export default function TodayPage() {
                     done={habbit.done}
                     currentSequence={habbit.currentSequence}
                     highestSequence={habbit.highestSequence}
+                    initialHighestSequence={habbit.highestSequence}
                     habbits={habbits}
                     setHabbits={setHabbits}
                 />)

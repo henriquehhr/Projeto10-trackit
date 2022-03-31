@@ -4,7 +4,7 @@ import UserContext from "../contexts/UserContexts";
 
 import { $TodayHabbitContainer } from "./style";
 
-export default function TodayHabbit({ id, name, done, currentSequence, highestSequence, habbits, setHabbits }) {
+export default function TodayHabbit({ id, name, done, currentSequence, highestSequence, initialHighestSequence, habbits, setHabbits }) {
 
     const { authToken } = useContext(UserContext);
 
@@ -17,11 +17,20 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
             }
         };
         const promisse = axios.post(url, {}, config);
-        //TODO confirmar pra ver se preciso alterar manualmente o valor de currentSequence
         promisse.then(() => {
             done = !done;
             //TODO mudar a linha abaixo. Está alterando a ordem dos hábitos depois que marca/desmarca
             const newHabbits = habbits.filter(habbit => habbit.id != id);
+            if (done) {
+                currentSequence++;
+                if (currentSequence > highestSequence)
+                    highestSequence++;
+            } else {
+                currentSequence--;
+                //TODO confirmar a lógica da alteração do highestSequence
+                if (highestSequence == initialHighestSequence)
+                    highestSequence--;
+            }
             setHabbits([...newHabbits, { id, name, done, currentSequence, highestSequence }]);
         });
         promisse.catch(err => console.log(err));
