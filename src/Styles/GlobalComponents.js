@@ -79,6 +79,7 @@ export const $WeekButton = styled.button`
     height: 30px;
     width: 30px;
     background-color: #FFFFFF;
+    transition: all 0.3s ease-out;
 
     &.selected {
         border-color: #CFCFCF;
