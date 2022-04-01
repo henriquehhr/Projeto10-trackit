@@ -52,7 +52,7 @@ export default function TodayPage() {
     return (
         <$TodayPageSection>
             <TrackItHeader />
-            <$H2 /*className={habbits.length > 2 ? "grande" : ""}*/>{date}</$H2>
+            <$H2>{date}</$H2>
             {getPercentHabbitsDone()}
             <ul>
                 {renderTodayHabbits()}

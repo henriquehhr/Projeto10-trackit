@@ -17,30 +17,30 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
             }
         };
         const promisse = axios.post(url, {}, config);
-        promisse.then(() => {
-            done = !done;
-            if (done) {
-                currentSequence++;
-                if (currentSequence > highestSequence)
-                    highestSequence++;
-            } else {
-                currentSequence--;
-                //TODO confirmar a lógica da alteração do highestSequence
-                if (highestSequence == initialHighestSequence)
-                    highestSequence--;
+        done = !done;
+        if (done) {
+            currentSequence++;
+            if (currentSequence > highestSequence)
+                highestSequence++;
+        } else {
+            currentSequence--;
+            //TODO confirmar a lógica da alteração do highestSequence
+            if (highestSequence == initialHighestSequence)
+                highestSequence--;
+        }
+        for (let habbit of habbits) {
+            if (habbit.id == id) {
+                habbit.done = done;
+                habbit.currentSequence = currentSequence;
+                habbit.highestSequence = highestSequence;
+                break;
             }
-            for (let habbit of habbits) {
-                if (habbit.id == id) {
-                    habbit.done = done;
-                    habbit.currentSequence = currentSequence;
-                    habbit.highestSequence = highestSequence;
-                    break;
-                }
-            }
-            //TODO colocar a função setHabbits antes do promisse.then() para não ter atraso na renderização
-            setHabbits([...habbits]);
+        }
+        setHabbits([...habbits]);
+        promisse.catch(err => {
+            console.log(err)
+            alert("Erro na hora de confirmar a realização do hábito.");
         });
-        promisse.catch(err => console.log(err));
     }
 
     return (
