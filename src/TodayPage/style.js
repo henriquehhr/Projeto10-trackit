@@ -13,6 +13,14 @@ export const $TodayPageSection = styled($Section)`
         }
     }
 
+    /*h2 {
+        transition: all 5s ease-in;
+
+        &.grande {
+            font-size: 30px;
+        }
+    }*/
+
     ul {
         display: grid;
         grid-template-columns: 1fr;

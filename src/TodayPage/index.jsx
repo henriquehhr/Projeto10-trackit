@@ -14,7 +14,7 @@ export default function TodayPage() {
 
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
     const now = dayjs();
-    const date = `${week[now.$W]}, ${now.$D}/${now.$M < 9 ? "0" + (now.$M + 1) : now.$M + 1}`;
+    const date = `${week[now.$W]}, ${now.$D < 10 ? "0" + now.$D : now.$D}/${now.$M < 9 ? "0" + (now.$M + 1) : now.$M + 1}`;
 
     function getPercentHabbitsDone() {
         if (habbits.length == 0)
@@ -52,7 +52,7 @@ export default function TodayPage() {
     return (
         <$TodayPageSection>
             <TrackItHeader />
-            <$H2>{date}</$H2>
+            <$H2 /*className={habbits.length > 2 ? "grande" : ""}*/>{date}</$H2>
             {getPercentHabbitsDone()}
             <ul>
                 {renderTodayHabbits()}
