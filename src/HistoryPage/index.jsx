@@ -58,7 +58,7 @@ export default function HistoryPage() {
                 return <$Day className="habbits-not-done">{dayString}</$Day>
             }
         }
-        return dayString;
+        return <$Day>{dayString}</$Day>;
     }
 
     return (

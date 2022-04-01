@@ -14,6 +14,7 @@ export const $Day = styled.div`
     border-radius: 50%;
     display: grid;
     place-content: center;
+    transition: all 0.3s ease-out;
 
     &.habbits-done {
         background-color: #8CC654;
