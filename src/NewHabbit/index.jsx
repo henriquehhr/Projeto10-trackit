@@ -41,11 +41,11 @@ export default function NewHabbit({ setCreateHabbit, habbits, setHabbits, weekBu
         const promisse = axios.post(url, body, config);
         setDisabled(true);
         promisse.then((response) => {
-            setHabbits([{
+            setHabbits([...habbits, {
                 id: response.data.id,
                 name: response.data.name,
                 days: response.data.days
-            }, ...habbits]);
+            }]);
             setDisabled(false);
             setCreateHabbit(false);
             setHabbitTitle("");

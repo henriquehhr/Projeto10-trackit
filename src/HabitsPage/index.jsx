@@ -59,7 +59,7 @@ export default function HabitsPage() {
                 days={habbit.days}
                 habbits={habbits}
                 setHabbits={setHabbits}
-            />)
+            />).reverse()
         );
     }
 
