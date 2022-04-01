@@ -9,7 +9,7 @@ export const $HistoryPageSection = styled($Section)`
         height: 402px;
 
         .react-calendar__viewContainer {
-            height: max-content;
+            height: 100;
 
             .react-calendar__month-view {
                 height: 100%;
