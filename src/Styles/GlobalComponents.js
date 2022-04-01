@@ -53,6 +53,8 @@ export const $Input = styled.input`
     color: #666666;
     height: 45px;
     padding-left: 10px;
+    transition: all .3s ease-out;
+
 
     :disabled {
         background-color: #F2F2F2;
