@@ -45,6 +45,7 @@ export default function HabitsPage() {
         />;
     }
     //TODO renderizar os hábitos na ordem contrária
+    //TODO armazenar os hábitos no contexto global para não precisar ver a tela de loading toda vez que reentrar em /habitos
     function renderHabbits() {
         if (habbits.length == 0)
             return (

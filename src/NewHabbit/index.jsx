@@ -14,7 +14,6 @@ export default function NewHabbit({ setCreateHabbit, habbits, setHabbits, weekBu
 
     function saveHabbit(e) {
         e.preventDefault();
-        //TODO fazer validações antes de salvar o hábito
         if (habbitTitle === "") {
             alert("Insira um título para o hábito antes de salvar");
             return;
