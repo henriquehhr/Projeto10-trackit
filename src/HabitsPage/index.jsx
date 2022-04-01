@@ -10,7 +10,7 @@ import { $HabitsPageSection } from "./style";
 
 export default function HabitsPage() {
 
-    const [habbits, setHabbits] = useState([]);
+    const [habbits, setHabbits] = useState(null);
     const [createHabbit, setCreateHabbit] = useState(false);
     const [weekButtons, setWeekButtons] = useState([
         false, false, false, false, false, false, false,
@@ -44,6 +44,8 @@ export default function HabitsPage() {
     }
     //TODO armazenar os hábitos no contexto global para não precisar ver a tela de loading toda vez que reentrar em /habitos
     function renderHabbits() {
+        if (!habbits)
+            return <p>Carregando os hábitos</p>
         if (habbits.length == 0)
             return (
                 <p>Você não tem nenhum hábito cadastrado ainda.
