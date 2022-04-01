@@ -1,5 +1,4 @@
-import { useEffect, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import dayjs from "dayjs";
 import UserContext from "./../contexts/UserContexts";
 

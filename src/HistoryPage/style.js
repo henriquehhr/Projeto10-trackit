@@ -2,46 +2,24 @@ import styled from "styled-components";
 import { $Section } from "../Styles/GlobalComponents";
 
 export const $HistoryPageSection = styled($Section)`
-    .react-calendar {
-        border-radius: 10px;
-        background-color: #FFFFFF;
-        padding: 12px 8px 25px 8px;
-        height: 402px;
+    h2 {
+        margin-bottom: 12px;
+    }
+`;
 
-        .react-calendar__viewContainer {
-            height: 100;
+export const $Day = styled.div`
 
-            .react-calendar__month-view {
-                height: 100%;
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
 
-                div {
-                    //height: 100%;
-                }
-            }
-        }
+    &.habbits-done {
+        background-color: #8CC654;
+    }
 
-        .react-calendar__navigation {
-            display: flex;
-            justify-content: space-around;
-            margin: 0 0 40px 0;
-
-            .react-calendar__navigation__label {
-                flex-grow: 0 !important;
-            }
-        }
-
-        .react-calendar__month-view__weekdays__weekday {
-            display: grid;
-            place-content: center;
-        }
-
-        .react-calendar__month-view__days {
-            display: grid !important;
-            grid-template-columns: repeat(7, 1FR);
-        }
-
-        .react-calendar__tile {
-
-        }
+    &.habbits-not-done {
+        background-color: #EB5766;
     }
 `;
