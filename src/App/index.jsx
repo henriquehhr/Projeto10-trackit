@@ -10,8 +10,8 @@ import "./../reset.css";
 
 export default function App() {
 
-    const [authToken, setAuthToken] = useState(JSON.parse(localStorage.getItem("chave-secreta")).token);
-    const [userAvatar, setUserAvatar] = useState(JSON.parse(localStorage.getItem("chave-secreta")).image);
+    const [authToken, setAuthToken] = useState(JSON.parse(localStorage.getItem("chave-secreta"))?.token);
+    const [userAvatar, setUserAvatar] = useState(JSON.parse(localStorage.getItem("chave-secreta"))?.image);
     const [habbits, setHabbits] = useState([]);
     const contextValue = { authToken, setAuthToken, userAvatar, setUserAvatar, habbits, setHabbits };
     const navigate = useNavigate();
