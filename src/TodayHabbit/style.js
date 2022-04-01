@@ -47,6 +47,7 @@ export const $TodayHabbitContainer = styled.div`
         border-radius: 5px;
         border: none;
         background-color: #EBEBEB;
+        transition: background-color .3s ease-out;
 
         &.selected {
             background-color: #8FC549;
