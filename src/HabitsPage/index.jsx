@@ -28,7 +28,7 @@ export default function HabitsPage() {
         const promisse = axios.get(url, config);
         promisse.then(response => setHabbits(response.data));
     }, [authToken]);
-    //TODO criar tela de loading
+
     function renderCreatHabbit() {
         if (!createHabbit)
             return;

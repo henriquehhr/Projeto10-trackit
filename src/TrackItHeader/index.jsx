@@ -10,8 +10,11 @@ export default function TrackItHeader() {
     const navigate = useNavigate();
 
     function logoff() {
-        localStorage.removeItem("chave-secreta");
-        navigate("/");
+        const confirmation = window.confirm("Deseja fazer logoff?");
+        if (confirmation) {
+            localStorage.removeItem("chave-secreta");
+            navigate("/");
+        }
     }
 
     return (
