@@ -18,14 +18,14 @@ export default function App() {
     const location = useLocation();
 
     useEffect(() => {
-        const loggedUser = JSON.parse(localStorage.getItem("chave-secreta"));
-        if (loggedUser) {
-            setUserAvatar(loggedUser.image);
-            setAuthToken(loggedUser.token);
-            if (location.pathname !== "/")
+        if (authToken) {
+            if (location.pathname !== "/" && location.pathname !== "/cadastro")
                 navigate(location.pathname);
             else
                 navigate("/hoje");
+        } else {
+            if (location.pathname === "/habitos" || location.pathname === "/hoje" || location.pathname === "/historico")
+                navigate("/");
         }
     }, []);
 

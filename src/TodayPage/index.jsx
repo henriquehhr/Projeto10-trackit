@@ -11,7 +11,6 @@ import TodayHabbit from "../TodayHabbit";
 export default function TodayPage() {
 
     const { habbits, setHabbits } = useContext(UserContext);
-
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
     const now = dayjs();
     const date = `${week[now.$W]}, ${now.$D < 10 ? "0" + now.$D : now.$D}/${now.$M < 9 ? "0" + (now.$M + 1) : now.$M + 1}`;

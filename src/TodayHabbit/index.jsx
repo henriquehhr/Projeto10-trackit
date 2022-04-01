@@ -40,6 +40,7 @@ export default function TodayHabbit({ id, name, done, currentSequence, highestSe
         promisse.catch(err => {
             console.log(err)
             alert("Erro na hora de confirmar a realização do hábito.");
+            window.location.reload(false);
         });
     }
 

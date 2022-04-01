@@ -19,8 +19,6 @@ export default function HabitsPage() {
     const { authToken } = useContext(UserContext);
 
     useEffect(() => {
-        if (!authToken)
-            return;
         const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
         const config = {
             headers: {
