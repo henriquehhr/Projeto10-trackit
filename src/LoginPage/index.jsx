@@ -42,7 +42,7 @@ export default function LoginPage() {
             <$Form onSubmit={sendLoginInfo} action="">
                 <$Input
                     placeholder="email"
-                    type="text"
+                    type="email"
                     value={loginInfo.email}
                     onChange={e => setLoginInfo({ ...loginInfo, email: e.target.value })}
                     disabled={disabled}

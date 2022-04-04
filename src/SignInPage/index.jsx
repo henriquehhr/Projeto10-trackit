@@ -37,7 +37,7 @@ export default function SignInPage() {
             <$Form onSubmit={sendSinginInfo} action="">
                 <$Input
                     placeholder="email"
-                    type="text"
+                    type="email"
                     value={singinInfo.email}
                     onChange={e => setSinginInfo({ ...singinInfo, email: e.target.value })}
                     disabled={disabled}
