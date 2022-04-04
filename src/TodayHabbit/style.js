@@ -15,6 +15,9 @@ export const $TodayHabbitContainer = styled.div`
         font-size: 20px;
         line-height: 25px;
         color: #666666;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     p {

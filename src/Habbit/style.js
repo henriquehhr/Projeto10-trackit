@@ -3,12 +3,19 @@ import styled from "styled-components";
 export const $HabbitContainer = styled.div`
     background-color: #FFFFFF;
     border-radius: 5px;
-    width: 100%;
+    max-width: 100%;
     padding: 18px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     position: relative;
+    
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
 
     ion-icon {
         position: absolute;
