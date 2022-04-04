@@ -79,7 +79,7 @@ export default function HistoryPage() {
                         <div className="day-habbits">
                             <p className="x" onClick={() => setChosenDate(null)}>X</p>
                             <$H2>{week[day.habits[0].weekDay]}, {date.slice(0, 5)}</$H2>
-                            <p className={percent == 100 ? "percent done" : "percent"}>{percent}% dos hábitos conclídos</p>
+                            <p className={percent == 100 ? "percent done" : "percent"}>{percent}% dos hábitos concluídos</p>
                             <br></br>
                             {
                                 day.habits.map(habbit =>
