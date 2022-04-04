@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 import TrackItFooter from "./../TrackItFooter";
 import TrackItHeader from "./../TrackItHeader";
-import { $HistoryPageSection, $Day } from './style';
+import { $HistoryPageSection, $Day, $Overlay } from './style';
 import { $H2 } from "../Styles/GlobalComponents";
 import "./calendar.css";
 
@@ -67,7 +67,6 @@ export default function HistoryPage() {
         const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
         for (let day of fullCalendar.current) {
             if (day.day === date) {
-                console.log(day);
                 let count = 0;
                 for (let habbit of day.habits) {
                     if (habbit.done)
@@ -75,7 +74,7 @@ export default function HistoryPage() {
                 }
                 const percent = Math.round((count * 100) / day.habits.length);
                 setChosenDate(
-                    <div className="overlay">
+                    <$Overlay>
                         <div className="day-habbits">
                             <p className="x" onClick={() => setChosenDate(null)}>X</p>
                             <$H2>{week[day.habits[0].weekDay]}, {date.slice(0, 5)}</$H2>
@@ -98,7 +97,7 @@ export default function HistoryPage() {
                                 )
                             }
                         </div>
-                    </div>
+                    </$Overlay>
                 );
                 return;
             }
