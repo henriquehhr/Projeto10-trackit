@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, useRef } from 'react';
 import UserContext from "./../contexts/UserContexts";
 import Calendar from 'react-calendar'
 import axios from "axios";
@@ -12,8 +12,9 @@ import "./calendar.css";
 
 export default function HistoryPage() {
 
-    //const [date, setDate] = useState(new Date());
+    const [chosenDate, setChosenDate] = useState();
     const [calendarHabbitTracking, setCalendarHabbitTracking] = useState([]);
+    const fullCalendar = useRef();
     const { authToken } = useContext(UserContext);
 
     useEffect(() => {
@@ -29,6 +30,7 @@ export default function HistoryPage() {
     }, []);
 
     function getCalendarHabbitTracking(habbitTracking) {
+        fullCalendar.current = habbitTracking;
         const calendar = [];
         for (let day of habbitTracking) {
             let date = day.day;
@@ -54,11 +56,53 @@ export default function HistoryPage() {
         for (let day of calendarHabbitTracking) {
             if (day.date == dateString) {
                 if (day.done)
-                    return <$Day className="habbits-done">{dayString}</$Day>
-                return <$Day className="habbits-not-done">{dayString}</$Day>
+                    return <$Day className="habbits-done" onClick={() => displayHabbitsFromDate(dateString)}>{dayString}</$Day>
+                return <$Day className="habbits-not-done" onClick={() => displayHabbitsFromDate(dateString)}>{dayString}</$Day>
             }
         }
         return <$Day>{dayString}</$Day>;
+    }
+
+    function displayHabbitsFromDate(date) {
+        const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+        for (let day of fullCalendar.current) {
+            if (day.day === date) {
+                console.log(day);
+                let count = 0;
+                for (let habbit of day.habits) {
+                    if (habbit.done)
+                        count++;
+                }
+                const percent = Math.round((count * 100) / day.habits.length);
+                setChosenDate(
+                    <div className="overlay">
+                        <div className="day-habbits">
+                            <p className="x" onClick={() => setChosenDate(null)}>X</p>
+                            <$H2>{week[day.habits[0].weekDay]}, {date.slice(0, 5)}</$H2>
+                            <p className={percent == 100 ? "percent done" : "percent"}>{percent}% dos hábitos conclídos</p>
+                            <br></br>
+                            {
+                                day.habits.map(habbit =>
+                                    <div className='habbit' key={habbit.id}>
+                                        <p className="habbit-name">{habbit.name}</p>
+                                        {
+                                            habbit.done ?
+                                                <div className="done">
+                                                    <ion-icon name="checkmark-outline"></ion-icon>
+                                                </div> :
+                                                <div className="not-done">
+                                                    <ion-icon name="close-outline"></ion-icon>
+                                                </div>
+                                        }
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                );
+                return;
+            }
+        }
     }
 
     return (
@@ -66,12 +110,11 @@ export default function HistoryPage() {
             <TrackItHeader />
             <$H2>Histórico</$H2>
             <Calendar
-                //onClickDay={setDate}
-                //value={date}
                 calendarType="US"
                 locale="pt-br"
                 formatDay={(locale, date) => formatDate(date)}
             />
+            {chosenDate}
             <TrackItFooter />
         </$HistoryPageSection>
     );
