@@ -40,6 +40,9 @@ export const $HistoryPageSection = styled($Section)`
         }
 
         p.habbit-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         div.habbit {
